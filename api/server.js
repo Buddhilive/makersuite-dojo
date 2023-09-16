@@ -2,17 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const { DiscussServiceClient } = require("@google-ai/generativelanguage");
 const { GoogleAuth } = require("google-auth-library");
-const { my_api_key } = require('../temp/api-key');
 const { SAMPLE_CONTEXT, SAMPLE_PROMPTS } = require('./shared/chat-samples');
 
 /* const BASE_URL = "https://generativelanguage.googleapis.com/";
 const API_VERSION = 'v1beta2'; */
 const MODEL_NAME = 'models/chat-bison-001';
-const API_KEY = my_api_key;
-
-const client = new DiscussServiceClient({
-    authClient: new GoogleAuth().fromAPIKey(API_KEY),
-});
 
 const context = SAMPLE_CONTEXT;
 const examples = SAMPLE_PROMPTS;
@@ -25,8 +19,12 @@ app.use(express.json());
 app.post('/post', (req, res) => {
     // Get the data from the request body
     const data = req.body;
-
+    const API_KEY = data.api_key;
     const messages = [];
+
+    const client = new DiscussServiceClient({
+        authClient: new GoogleAuth().fromAPIKey(API_KEY),
+    });
 
     messages.push({ "content": data?.text });
 
