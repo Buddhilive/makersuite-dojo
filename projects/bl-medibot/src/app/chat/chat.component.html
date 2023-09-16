@@ -1,0 +1,5 @@
+<div *ngFor="let msg of responses">
+    {{msg[0]?.candidates[0]?.content}}
+</div>
+<input type="text" name="" #msgInput/>
+<button (click)="getResponse(msgInput)">send</button>
