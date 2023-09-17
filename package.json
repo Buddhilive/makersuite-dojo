@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start:medibot": "ng serve --project=bl-medibot --proxy-config=./proxy.config.json",
-    "run:api": "nodemon api/server.js"
+    "start:apiserver": "nodemon api/server.js"
   },
   "private": true,
   "dependencies": {
