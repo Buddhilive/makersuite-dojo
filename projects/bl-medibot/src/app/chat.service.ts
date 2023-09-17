@@ -11,7 +11,7 @@ export class ChatService {
     "Content-Type": "application/json",
     'Access-Control-Allow-Origin': '*'
   });
-  BASE_URL = "http://localhost:3000/";
+  BASE_URL = "http://localhost:3000";
 
   constructor(private httpService: HttpClient) { }
 
