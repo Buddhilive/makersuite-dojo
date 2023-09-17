@@ -18,7 +18,7 @@ const app = express();
 app.use(cors()); // Enable CORS for all endpoints
 app.use(express.json()); 
 
-app.post('/post', (req, res) => {
+app.post('/chat', (req, res) => {
     // Get the data from the request body
     const data = req.body;
     
