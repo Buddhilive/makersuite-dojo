@@ -6,9 +6,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./copilot.component.scss']
 })
 export class CopilotComponent {
-  @ViewChild('sidepanel') sidepanel!: ElementRef<HTMLDivElement>;
-
-  openNav() {
-    this.sidepanel.nativeElement.classList.toggle('show');
+  @ViewChild('copilot') copilot!: ElementRef<HTMLDivElement>;
+  
+  toggleCopilot() {
+    this.copilot.nativeElement.classList.toggle('copilot--show');
   }
 }
