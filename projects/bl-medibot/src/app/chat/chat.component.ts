@@ -8,7 +8,31 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-chat',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './chat.component.html',
+  template: `<div class="medibot__container">
+  <div class="medibot__header">
+    <h1>Medibot</h1>
+  </div>
+  <div class="medibot__chat">
+    <div
+      *ngFor="let msg of responses"
+      [ngClass]="'medibot__chat--' + msg.author"
+    >
+      {{ msg.content }}
+    </div>
+    <ng-container *ngIf="isBotThinking">
+      <div class="medibot__chat--bot medibot--typing">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="medibot__sender">
+    <input type="text" [(ngModel)]="inputValue" #msgInput />
+    <button (click)="getResponse()"><i class="pi pi-send"></i></button>
+  </div>
+</div>
+`,
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
